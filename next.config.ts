@@ -1,10 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export', // Обязательно для GitHub Pages (создает статический HTML)
-  basePath: '/ebpro-showcase', // Имя вашего репозитория (обязательно с слэшем в начале)
+  output: 'export', // Ключевая настройка: превращает Next.js в статический сайт (папка 'out')
+  basePath: '/ebpro-showcase', // Обязательно: имя вашего репозитория на GitHub
   images: {
-    unoptimized: true, // Обязательно для static export, так как оптимизация требует Node.js сервера
+    unoptimized: true, // Обязательно: отключает оптимизацию изображений на сервере (для статики)
   },
 };
 
