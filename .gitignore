@@ -57,3 +57,13 @@ yarn-error.log*
 .DS_Store
 Thumbs.db
 desktop.ini
+# ═══ Добавлено скриптом organize-project.ps1 ═══
+# ═══ Next.js ═══
+# ═══ Dependencies ═══
+# ═══ IDE и ОС ═══
+# ═══ Сборка и кэш ═══
+*.tsbuildinfo
+next-env.d.ts
+# ═══ Резервные копии скриптов ═══
+_backup_*/
+organize-*.log
