@@ -1,4 +1,5 @@
 import { projects } from "@/data/projects";
+import ScreenshotGallery from "@/components/ScreenshotGallery"; // НОВЫЙ ИМПОРТ
 
 export default function Home() {
   return (
@@ -102,6 +103,12 @@ export default function Home() {
                     </span>
                   ))}
                 </div>
+
+                {/* КНОПКА ГАЛЕРЕИ - НОВАЯ СЕКЦИЯ */}
+                <ScreenshotGallery 
+                  screenshots={project.screenshots}
+                  projectTitle={project.title}
+                />
               </div>
             </article>
           ))}

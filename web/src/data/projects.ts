@@ -18,6 +18,7 @@ export interface Project {
   };
   author: string;
   previewImage: string;
+  screenshots: string[]; // НОВОЕ ПОЛЕ
 }
 
 export const projects: Project[] = [
@@ -40,7 +41,12 @@ export const projects: Project[] = [
       protocol: "Modbus TCP",
     },
     author: "Иван Ежов",
-    // Используем экран "Режим" как главное превью, так как он самый показательный
-    previewImage: "/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-02-mode.webp",
+    previewImage: "/projects/assets/optimized/screen-02-mode.webp",
+    screenshots: [
+      "/projects/assets/optimized/screen-01-main-menu.webp",
+      "/projects/assets/optimized/screen-02-mode.webp",
+      "/projects/assets/optimized/screen-03-settings.webp",
+      "/projects/assets/optimized/screen-04-archive.webp",
+    ],
   },
 ];
