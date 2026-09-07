@@ -18,7 +18,7 @@ export interface Project {
   };
   author: string;
   previewImage: string;
-  screenshots: string[]; // НОВОЕ ПОЛЕ
+  screenshots: string[]; // НОВОЕ ПОЛЕ для галереи
 }
 
 export const projects: Project[] = [
@@ -41,12 +41,14 @@ export const projects: Project[] = [
       protocol: "Modbus TCP",
     },
     author: "Иван Ежов",
-    previewImage: "/projects/assets/optimized/screen-02-mode.webp",
+    // ПРАВИЛЬНЫЙ путь - теперь папка есть в public/
+    previewImage: "/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-02-mode.webp",
+    // Массив скриншотов для галереи
     screenshots: [
-      "/projects/assets/optimized/screen-01-main-menu.webp",
-      "/projects/assets/optimized/screen-02-mode.webp",
-      "/projects/assets/optimized/screen-03-settings.webp",
-      "/projects/assets/optimized/screen-04-archive.webp",
+      "/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-01-main-menu.webp",
+      "/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-02-mode.webp",
+      "/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-03-settings.webp",
+      "/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-04-archive.webp",
     ],
   },
 ];
