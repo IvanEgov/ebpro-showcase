@@ -34,8 +34,8 @@ export default function Home() {
         {/* Сетка проектов */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {projects.map((project) => (
-            <article 
-              key={project.id} 
+            <article
+              key={project.id}
               className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 dark:border-gray-700"
             >
               {/* Превью изображения */}
@@ -46,11 +46,13 @@ export default function Home() {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-4 right-4">
-                  <span className={`px-3 py-1 text-xs font-semibold rounded-full ${
-                    project.complexity === 'advanced' 
-                      ? 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200' 
-                      : 'bg-green-100 text-green-800'
-                  }`}>
+                  <span
+                    className={`px-3 py-1 text-xs font-semibold rounded-full ${
+                      project.complexity === 'advanced'
+                        ? 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200'
+                        : 'bg-green-100 text-green-800'
+                    }`}
+                  >
                     {project.complexity === 'advanced' ? 'Advanced' : 'Medium'}
                   </span>
                 </div>
@@ -63,11 +65,11 @@ export default function Home() {
                     {project.category}
                   </span>
                 </div>
-                
+
                 <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
                   {project.title}
                 </h3>
-                
+
                 <p className="text-gray-600 dark:text-gray-300 text-sm mb-5 leading-relaxed">
                   {project.description}
                 </p>
@@ -93,10 +95,10 @@ export default function Home() {
                 </div>
 
                 {/* Теги */}
-                <div className="flex flex-wrap gap-2 mb-5">
+                <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
-                    <span 
-                      key={tag} 
+                    <span
+                      key={tag}
                       className="px-2.5 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md border border-gray-200 dark:border-gray-600"
                     >
                       {tag}
@@ -104,9 +106,9 @@ export default function Home() {
                   ))}
                 </div>
 
-                {/* Кнопка галереи скриншотов (Вариант А) */}
-                <ScreenshotGallery 
-                  screenshots={project.screenshots || []}
+                {/* ✅ ГАЛЕРЕЯ СКРИНШОТОВ */}
+                <ScreenshotGallery
+                  screenshots={project.screenshots}
                   projectTitle={project.title}
                 />
               </div>
