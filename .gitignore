@@ -21,15 +21,19 @@
 assets/raw/
 assets/screenshots/
 
+
+# Зависимости
+node_modules/
+
 # ========================================
 # Node.js / Next.js
 # ========================================
-node_modules/
 .next/
 out/
+
 build/
 dist/
-structure.txt/
+structure.txt
 
 # ========================================
 # Локальные файлы и настройки
