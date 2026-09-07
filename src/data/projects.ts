@@ -18,6 +18,7 @@ export interface Project {
   };
   author: string;
   previewImage: string;
+  screenshots: string[]; // <-- Добавлено поле для галереи
 }
 
 export const projects: Project[] = [
@@ -40,6 +41,13 @@ export const projects: Project[] = [
       protocol: "Modbus TCP",
     },
     author: "Иван Ежов",
-    previewImage: "/projects/assets/optimized/screen-01-main-menu.webp",
+    previewImage: "/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-02-mode.webp",
+    // Добавлен массив скриншотов для галереи
+    screenshots: [
+      "/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-01-main-menu.webp",
+      "/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-02-mode.webp",
+      "/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-03-settings.webp",
+      "/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-04-archive.webp",
+    ],
   },
 ];
