@@ -18,27 +18,17 @@ export interface Project {
   };
   author: string;
   previewImage: string;
-  screenshots: string[]; // НОВОЕ: массив скриншотов для галереи
+  screenshots: string[]; // НОВОЕ ПОЛЕ
 }
 
 export const projects: Project[] = [
   {
     id: "01-smart-warehouse-AleksandroskoeBOK",
     title: "Водоочистной комплекс с. Александровское",
-    description:
-      "SCADA-система управления водоочистным комплексом: мониторинг и управление насосными группами, задвижками, контроль уровней в резервуарах. Реализована полная мнемосхема технологического процесса.",
+    description: "SCADA-система управления водоочистным комплексом: мониторинг и управление насосными группами, задвижками, контроль уровней в резервуарах. Реализована полная мнемосхема технологического процесса.",
     category: "SCADA / Водоканал",
     complexity: "advanced",
-    tags: [
-      "SCADA",
-      "Водоочистка",
-      "Насосы",
-      "Задвижки",
-      "PLC",
-      "Мнемосхема",
-      "Алармы",
-      "Тренды",
-    ],
+    tags: ["SCADA", "Водоочистка", "Насосы", "Задвижки", "PLC", "Мнемосхема", "Алармы", "Тренды"],
     features: {
       screens_count: 4,
       macros_count: 3,
@@ -51,10 +41,7 @@ export const projects: Project[] = [
       protocol: "Modbus TCP",
     },
     author: "Иван Ежов",
-    // Главный экран-превью
-    previewImage:
-      "/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-02-mode.webp",
-    // Все скриншоты для галереи (порядок важен!)
+    previewImage: "/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-02-mode.webp",
     screenshots: [
       "/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-01-main-menu.webp",
       "/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-02-mode.webp",
