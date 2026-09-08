@@ -42,7 +42,7 @@ export const projects: Project[] = [
     },
     author: "Иван Ежов",
     // Пробелы в конце убраны!
-    previewImage: "projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-01-main-menu.webp",
+    previewImage: "projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/01-menu-izumrud.webp",
     screenshots: [
       "projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-01-main-menu.webp",
       "projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-02-mode.webp",
@@ -58,7 +58,7 @@ export const projects: Project[] = [
     complexity: "advanced",
     tags: ["SCADA", "Котлы", "Насосы", "Задвижки", "PLC", "Мнемосхема", "Алармы", "Тренды"],
     features: {
-      screens_count: 4,
+      screens_count: 6,
       macros_count: 3,
       has_data_logging: true,
       has_alarm_server: true,
@@ -72,10 +72,11 @@ export const projects: Project[] = [
     // Пробелы в конце убраны!
     previewImage: "projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-01-main-menu.webp",
     screenshots: [
-      "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/screen-01-main-menu.webp",
-      "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/screen-02-mode.webp",
-      "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/screen-03-settings.webp",
-      "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/screen-04-archive.webp",
+      "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/01-menu-izumrud.webp",
+      "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/02-graf-izumrud.webp",
+      "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/03-nastr-izumrud.webp",
+      "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/04-arhiv-izumrud.webp",
+      "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/05-ctp-izumrud.webp",
+      "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/06-upr-izumrud.webp",
     ],
-  },
-];
+  },];
