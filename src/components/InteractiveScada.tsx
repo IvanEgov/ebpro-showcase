@@ -212,18 +212,77 @@ export default function InteractiveScada() {
           style={{ filter: `drop-shadow(0 0 6px ${pumpMainRunning ? '#00ff00' : '#ff0000'})` }}/>
 </g>
 
-              {/* ===== БАК-РЕАКТОР ===== */}
-              <g onClick={() => setReactorLevel(Math.random() * 100)} className="cursor-pointer">
-                <rect x="80" y="200" width="180" height="120" rx="15" fill="#c0c0c0" stroke="#808080" strokeWidth="3"/>
-                <rect x="90" y={320 - reactorLevel * 1} width="160" height={reactorLevel * 1} rx="10" fill="#00b4d8" opacity="0.5"/>
-                <ellipse cx="120" cy="200" rx="15" ry="5" fill="#a0a0a0" stroke="#808080" strokeWidth="2"/>
-                <ellipse cx="220" cy="200" rx="15" ry="5" fill="#a0a0a0" stroke="#808080" strokeWidth="2"/>
-                <text x="170" y="240" textAnchor="middle" fontSize="18" fontWeight="bold" fill="white">ВУ</text>
-                <text x="170" y="270" textAnchor="middle" fontSize="14" fill="white">Бак-реактор</text>
-                <text x="170" y="300" textAnchor="middle" fontSize="18" fontWeight="bold" fill="white">НУ</text>
-                <circle cx="240" cy="230" r="10" fill={reactorLevel > 80 ? '#ff0000' : '#00ff00'} className="animate-pulse"/>
-                <circle cx="240" cy="280" r="10" fill={reactorLevel < 20 ? '#ff0000' : '#00ff00'} className="animate-pulse"/>
-              </g>
+              {/* В начало SVG, перед всеми элементами, добавьте блок с градиентами */}
+<defs>
+  {/* Градиент для металлических баков (вертикальный) */}
+  <linearGradient id="tankGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stopColor="#808080"/>
+    <stop offset="20%" stopColor="#d0d0d0"/>
+    <stop offset="50%" stopColor="#f0f0f0"/>
+    <stop offset="80%" stopColor="#d0d0d0"/>
+    <stop offset="100%" stopColor="#808080"/>
+  </linearGradient>
+  
+  {/* Градиент для жидкости (голубой) */}
+  <linearGradient id="liquidGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stopColor="#00d4ff" stopOpacity="0.8"/>
+    <stop offset="100%" stopColor="#0088aa" stopOpacity="0.9"/>
+  </linearGradient>
+  
+  {/* Градиент для фильтров */}
+  <linearGradient id="filterGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stopColor="#909090"/>
+    <stop offset="30%" stopColor="#e0e0e0"/>
+    <stop offset="70%" stopColor="#e0e0e0"/>
+    <stop offset="100%" stopColor="#909090"/>
+  </linearGradient>
+  
+  {/* Радиальный градиент для крышек */}
+  <radialGradient id="capGradient">
+    <stop offset="0%" stopColor="#f0f0f0"/>
+    <stop offset="100%" stopColor="#a0a0a0"/>
+  </radialGradient>
+  
+  {/* Градиент для септика */}
+  <linearGradient id="septicGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stopColor="#505050"/>
+    <stop offset="100%" stopColor="#303030"/>
+  </linearGradient>
+</defs>
+
+{/* ===== БАК-РЕАКТОР (с темными названиями) ===== */}
+<g onClick={() => setReactorLevel(Math.random() * 100)} className="cursor-pointer">
+  {/* Ножки бака */}
+  <rect x="100" y="320" width="15" height="30" fill="#606060" stroke="#404040" strokeWidth="1"/>
+  <rect x="245" y="320" width="15" height="30" fill="#606060" stroke="#404040" strokeWidth="1"/>
+  
+  {/* Основной корпус */}
+  <rect x="80" y="200" width="200" height="120" rx="10" fill="url(#tankGradient)" stroke="#606060" strokeWidth="2"/>
+  
+  {/* Верхний и нижний фланцы */}
+  <ellipse cx="180" cy="200" rx="100" ry="8" fill="url(#capGradient)" stroke="#808080" strokeWidth="2"/>
+  <ellipse cx="180" cy="320" rx="100" ry="8" fill="url(#capGradient)" stroke="#808080" strokeWidth="2"/>
+  
+  {/* Жидкость внутри */}
+  <rect x="90" y={320 - reactorLevel * 1.2} width="180" height={reactorLevel * 1.2} rx="5" fill="url(#liquidGradient)"/>
+  
+  {/* Блики на корпусе */}
+  <rect x="100" y="210" width="8" height="100" rx="4" fill="#fff" opacity="0.3"/>
+  <rect x="252" y="210" width="8" height="100" rx="4" fill="#000" opacity="0.2"/>
+  
+  {/* Крышки сверху */}
+  <ellipse cx="120" cy="200" rx="18" ry="6" fill="#c0c0c0" stroke="#808080" strokeWidth="2"/>
+  <ellipse cx="240" cy="200" rx="18" ry="6" fill="#c0c0c0" stroke="#808080" strokeWidth="2"/>
+  
+  {/* Текст - темный */}
+  <text x="180" y="245" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#0a0a0a" style={{ textShadow: '1px 1px 1px rgba(255,255,255,0.5)' }}>ВУ</text>
+  <text x="180" y="275" textAnchor="middle" fontSize="16" fill="#0a0a0a" style={{ textShadow: '1px 1px 1px rgba(255,255,255,0.5)' }}>Бак-реактор</text>
+  <text x="180" y="305" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#0a0a0a" style={{ textShadow: '1px 1px 1px rgba(255,255,255,0.5)' }}>НУ</text>
+  
+  {/* Индикаторы */}
+  <circle cx="260" cy="235" r="12" fill={reactorLevel > 80 ? '#ff0000' : '#00ff00'} stroke="#fff" strokeWidth="2" className="animate-pulse" style={{ filter: `drop-shadow(0 0 4px ${reactorLevel > 80 ? '#ff0000' : '#00ff00'})` }}/>
+  <circle cx="260" cy="285" r="12" fill={reactorLevel < 20 ? '#ff0000' : '#00ff00'} stroke="#fff" strokeWidth="2" className="animate-pulse" style={{ filter: `drop-shadow(0 0 4px ${reactorLevel < 20 ? '#ff0000' : '#ff0000'})` }}/>
+</g>
 
               {/* ===== НАСОС 1 (СДВИНУТ НА 20px ВЛЕВО) ===== */}
               <g onClick={() => togglePump(1)} className="cursor-pointer">
@@ -257,29 +316,78 @@ export default function InteractiveScada() {
                 </text>
               </g>
 
-              {/* ===== МАНОМЕТР ===== */}
-              <g>
-                <circle cx="400" cy="80" r="20" fill="#202020" stroke="#404040" strokeWidth="2"/>
-                <text x="400" y="77" textAnchor="middle" fontSize="11" fill="#00d4ff">{pressureMain.toFixed(1)}</text>
-                <text x="400" y="90" textAnchor="middle" fontSize="9" fill="white">Па</text>
-              </g>
+              {/* ===== МАНОМЕТР на главной трубе (увеличен) ===== */}
+<g>
+  {/* Корпус манометра */}
+  <circle cx="400" cy="60" r="30" fill="#303030" stroke="#606060" strokeWidth="3"/>
+  <circle cx="400" cy="60" r="24" fill="#151515" stroke="#404040" strokeWidth="2"/>
+  
+  {/* Циферблат */}
+  <circle cx="400" cy="60" r="20" fill="#0a0a0a"/>
+  
+  {/* Деления шкалы */}
+  <line x1="400" y1="42" x2="400" y2="46" stroke="#fff" strokeWidth="1.5"/>
+  <line x1="418" y1="60" x2="414" y2="60" stroke="#fff" strokeWidth="1.5"/>
+  <line x1="400" y1="78" x2="400" y2="74" stroke="#fff" strokeWidth="1.5"/>
+  <line x1="382" y1="60" x2="386" y2="60" stroke="#fff" strokeWidth="1.5"/>
+  
+  {/* Стрелка */}
+  <line 
+    x1="400" 
+    y1="60" 
+    x2={400 + Math.cos((pressureMain / 2.5) * Math.PI - Math.PI/2) * 15} 
+    y2={60 + Math.sin((pressureMain / 2.5) * Math.PI - Math.PI/2) * 15} 
+    stroke="#ff4444" 
+    strokeWidth="2"
+    strokeLinecap="round"
+  />
+  
+  {/* Центральная точка */}
+  <circle cx="400" cy="60" r="3" fill="#c0c0c0"/>
+  
+  {/* Значение давления */}
+  <text x="400" y="52" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#00d4ff">{pressureMain.toFixed(1)}</text>
+  <text x="400" y="72" textAnchor="middle" fontSize="9" fill="#fff">Па</text>
+</g>
 
-              {/* ===== 4 ФИЛЬТРА ===== */}
-              {[0, 1, 2, 3].map((i) => {
-                const x = 470 + i * 150;
-                return (
-                  <g key={i} onClick={() => toggleFilter(i)} className="cursor-pointer">
-                    <rect x={x} y="200" width="60" height="150" rx="8" fill="#d0d0d0" stroke="#808080" strokeWidth="2"/>
-                    <ellipse cx={x + 30} cy="200" rx="30" ry="8" fill="#b0b0b0" stroke="#808080" strokeWidth="2"/>
-                    <ellipse cx={x + 30} cy="350" rx="30" ry="8" fill="#b0b0b0" stroke="#808080" strokeWidth="2"/>
-                    <rect x={x + 5} y="260" width="50" height="22" rx="3" fill={filterStatus[i] ? '#2d5016' : '#8b0000'}/>
-                    <text x={x + 30} y="275" textAnchor="middle" fontSize="10" fontWeight="bold" fill="white">
-                      {filterStatus[i] ? 'Работа' : 'Авария'}
-                    </text>
-                    <circle cx={x + 30} cy="220" r="6" fill={filterStatus[i] ? '#00ff00' : '#ff0000'} className="animate-pulse"/>
-                  </g>
-                );
-              })}
+              {/* ===== 4 ФИЛЬТРА (объёмные) ===== */}
+{[0, 1, 2, 3].map((i) => {
+  const x = 470 + i * 150;
+  return (
+    <g key={i} onClick={() => toggleFilter(i)} className="cursor-pointer">
+      {/* Ножки фильтра */}
+      <rect x={x + 10} y="350" width="8" height="20" fill="#606060" stroke="#404040" strokeWidth="1"/>
+      <rect x={x + 42} y="350" width="8" height="20" fill="#606060" stroke="#404040" strokeWidth="1"/>
+      
+      {/* Основной корпус */}
+      <rect x={x} y="200" width="60" height="150" rx="8" fill="url(#filterGradient)" stroke="#707070" strokeWidth="2"/>
+      
+      {/* Верхний фланец (крышка) */}
+      <ellipse cx={x + 30} cy="200" rx="30" ry="10" fill="url(#capGradient)" stroke="#808080" strokeWidth="2"/>
+      
+      {/* Нижний фланец */}
+      <ellipse cx={x + 30} cy="350" rx="30" ry="10" fill="url(#capGradient)" stroke="#808080" strokeWidth="2"/>
+      
+      {/* Блики на корпусе */}
+      <rect x={x + 8} y="210" width="4" height="130" rx="2" fill="#fff" opacity="0.4"/>
+      <rect x={x + 48} y="210" width="4" height="130" rx="2" fill="#000" opacity="0.2"/>
+      
+      {/* Индикатор состояния (плашка) */}
+      <rect x={x + 5} y="260" width="50" height="25" rx="4" fill={filterStatus[i] ? '#2d5016' : '#8b0000'} stroke="#fff" strokeWidth="1"/>
+      <text x={x + 30} y="277" textAnchor="middle" fontSize="11" fontWeight="bold" fill="white" style={{ textShadow: '1px 1px 1px rgba(0,0,0,0.8)' }}>
+        {filterStatus[i] ? 'Работа' : 'Авария'}
+      </text>
+      
+      {/* Лампочка индикатора */}
+      <circle cx={x + 30} cy="230" r="8" fill={filterStatus[i] ? '#00ff00' : '#ff0000'} stroke="#fff" strokeWidth="2" className="animate-pulse" style={{ filter: `drop-shadow(0 0 6px ${filterStatus[i] ? '#00ff00' : '#ff0000'})` }}/>
+      
+      {/* Манометр на фильтре - увеличен и поднят */}
+<circle cx={x + 30} cy="195" r="12" fill="#202020" stroke="#606060" strokeWidth="2"/>
+<circle cx={x + 30} cy="195" r="9" fill="#101010" stroke="#404040" strokeWidth="1"/>
+<text x={x + 30} y="199" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#00d4ff">P</text>
+ </g>
+  );
+})}
 
               {/* ===== ГЛАВНЫЙ НАСОС ===== */}
               <g onClick={() => togglePump(3)} className="cursor-pointer">
@@ -299,37 +407,93 @@ export default function InteractiveScada() {
                 <text x="1050" y="410" textAnchor="middle" fontSize="8" fill="white">Па</text>
               </g>
 
-              {/* ===== РЧВ1 ===== */}
-              <g>
-                <rect x="1050" y="30" width="100" height="60" rx="5" fill="#c0c0c0" stroke="#808080" strokeWidth="2"/>
-                <text x="1100" y="55" textAnchor="middle" fontSize="14" fontWeight="bold" fill="white">РЧВ1</text>
-                <text x="1100" y="75" textAnchor="middle" fontSize="11" fill="#00d4ff">{pressureRCHV1.toFixed(1)} Па</text>
-              </g>
+{/* ===== РЧВ1 (с темным названием и крупным давлением) ===== */}
+<g>
+  {/* Ножки */}
+  <rect x="1060" y="90" width="12" height="25" fill="#606060" stroke="#404040" strokeWidth="1"/>
+  <rect x="1128" y="90" width="12" height="25" fill="#606060" stroke="#404040" strokeWidth="1"/>
+  
+  {/* Корпус */}
+  <rect x="1050" y="30" width="100" height="60" rx="8" fill="url(#tankGradient)" stroke="#606060" strokeWidth="2"/>
+  <ellipse cx="1100" cy="30" rx="50" ry="8" fill="url(#capGradient)" stroke="#808080" strokeWidth="2"/>
+  <ellipse cx="1100" cy="90" rx="50" ry="8" fill="url(#capGradient)" stroke="#808080" strokeWidth="2"/>
+  
+  {/* Блики */}
+  <rect x="1060" y="40" width="6" height="40" rx="3" fill="#fff" opacity="0.4"/>
+  <rect x="1134" y="40" width="6" height="40" rx="3" fill="#000" opacity="0.2"/>
+  
+  {/* Текст РЧВ1 - темный */}
+  <text x="1100" y="58" textAnchor="middle" fontSize="16" fontWeight="bold" fill="#0a0a0a" style={{ textShadow: '1px 1px 1px rgba(255,255,255,0.5)' }}>РЧВ1</text>
+  {/* Давление - крупнее и темнее */}
+  <text x="1100" y="78" textAnchor="middle" fontSize="15" fontWeight="bold" fill="#0a0a0a" style={{ textShadow: '1px 1px 1px rgba(255,255,255,0.5)' }}>{pressureRCHV1.toFixed(1)} Па</text>
+</g>
 
-              {/* ===== РЧВ2 ===== */}
-              <g>
-                <rect x="1050" y="120" width="100" height="60" rx="5" fill="#c0c0c0" stroke="#808080" strokeWidth="2"/>
-                <text x="1100" y="145" textAnchor="middle" fontSize="14" fontWeight="bold" fill="white">РЧВ2</text>
-                <text x="1100" y="165" textAnchor="middle" fontSize="11" fill="#00d4ff">{pressureRCHV2.toFixed(1)} Па</text>
-              </g>
+{/* ===== РЧВ2 (с темным названием и крупным давлением) ===== */}
+<g>
+  <rect x="1060" y="180" width="12" height="25" fill="#606060" stroke="#404040" strokeWidth="1"/>
+  <rect x="1128" y="180" width="12" height="25" fill="#606060" stroke="#404040" strokeWidth="1"/>
+  
+  <rect x="1050" y="120" width="100" height="60" rx="8" fill="url(#tankGradient)" stroke="#606060" strokeWidth="2"/>
+  <ellipse cx="1100" cy="120" rx="50" ry="8" fill="url(#capGradient)" stroke="#808080" strokeWidth="2"/>
+  <ellipse cx="1100" cy="180" rx="50" ry="8" fill="url(#capGradient)" stroke="#808080" strokeWidth="2"/>
+  
+  <rect x="1060" y="130" width="6" height="40" rx="3" fill="#fff" opacity="0.4"/>
+  <rect x="1134" y="130" width="6" height="40" rx="3" fill="#000" opacity="0.2"/>
+  
+  {/* Текст РЧВ2 - темный */}
+  <text x="1100" y="148" textAnchor="middle" fontSize="16" fontWeight="bold" fill="#0a0a0a" style={{ textShadow: '1px 1px 1px rgba(255,255,255,0.5)' }}>РЧВ2</text>
+  {/* Давление - крупнее и темнее */}
+  <text x="1100" y="168" textAnchor="middle" fontSize="15" fontWeight="bold" fill="#0a0a0a" style={{ textShadow: '1px 1px 1px rgba(255,255,255,0.5)' }}>{pressureRCHV2.toFixed(1)} Па</text>
+</g>
 
-              {/* ===== РПВ ===== */}
-              <g>
-                <rect x="1050" y="320" width="100" height="60" rx="5" fill="#c0c0c0" stroke="#808080" strokeWidth="2"/>
-                <text x="1100" y="345" textAnchor="middle" fontSize="14" fontWeight="bold" fill="white">РПВ</text>
-                <g>
-                  <circle cx="1075" cy="360" r="5" fill={pump1Running ? '#00ff00' : '#ff0000'} className="animate-pulse"/>
-                  <circle cx="1095" cy="360" r="5" fill={pump2Running ? '#00ff00' : '#ff0000'} className="animate-pulse"/>
-                  <circle cx="1115" cy="360" r="5" fill={pumpMainRunning ? '#00ff00' : '#ff0000'} className="animate-pulse"/>
-                </g>
-                <text x="1100" y="378" textAnchor="middle" fontSize="9" fill="white">ВУ СУ НУ</text>
-              </g>
+{/* ===== РПВ (поднят на 20px выше) ===== */}
+<g>
+  {/* Ножки */}
+  <rect x="1060" y="360" width="12" height="25" fill="#606060" stroke="#404040" strokeWidth="1"/>
+  <rect x="1128" y="360" width="12" height="25" fill="#606060" stroke="#404040" strokeWidth="1"/>
+  
+  {/* Корпус */}
+  <rect x="1050" y="300" width="100" height="60" rx="8" fill="url(#tankGradient)" stroke="#606060" strokeWidth="2"/>
+  <ellipse cx="1100" cy="300" rx="50" ry="8" fill="url(#capGradient)" stroke="#808080" strokeWidth="2"/>
+  <ellipse cx="1100" cy="360" rx="50" ry="8" fill="url(#capGradient)" stroke="#808080" strokeWidth="2"/>
+  
+  {/* Блики */}
+  <rect x="1060" y="310" width="6" height="40" rx="3" fill="#fff" opacity="0.4"/>
+  <rect x="1134" y="310" width="6" height="40" rx="3" fill="#000" opacity="0.2"/>
+  
+  {/* Текст РПВ - темный */}
+  <text x="1100" y="328" textAnchor="middle" fontSize="16" fontWeight="bold" fill="#0a0a0a" style={{ textShadow: '1px 1px 1px rgba(255,255,255,0.5)' }}>РПВ</text>
+  
+  {/* Индикаторы насосов */}
+  <g>
+    <circle cx="1075" cy="345" r="6" fill={pump1Running ? '#00ff00' : '#ff0000'} stroke="#fff" strokeWidth="1.5" className="animate-pulse" style={{ filter: `drop-shadow(0 0 4px ${pump1Running ? '#00ff00' : '#ff0000'})` }}/>
+    <circle cx="1095" cy="345" r="6" fill={pump2Running ? '#00ff00' : '#ff0000'} stroke="#fff" strokeWidth="1.5" className="animate-pulse" style={{ filter: `drop-shadow(0 0 4px ${pump2Running ? '#00ff00' : '#ff0000'})` }}/>
+    <circle cx="1115" cy="345" r="6" fill={pumpMainRunning ? '#00ff00' : '#ff0000'} stroke="#fff" strokeWidth="1.5" className="animate-pulse" style={{ filter: `drop-shadow(0 0 4px ${pumpMainRunning ? '#00ff00' : '#ff0000'})` }}/>
+  </g>
+  
+  <text x="1100" y="358" textAnchor="middle" fontSize="9" fill="#0a0a0a" style={{ textShadow: '1px 1px 1px rgba(255,255,255,0.5)' }}>ВУ СУ НУ</text>
+</g>
+  
 
-              {/* ===== СЕПТИК ===== */}
-              <g>
-                <rect x="880" y="450" width="140" height="40" rx="5" fill="#606060" stroke="#404040" strokeWidth="2"/>
-                <text x="950" y="475" textAnchor="middle" fontSize="14" fontWeight="bold" fill="white">Септик</text>
-              </g>
+{/* ===== СЕПТИК (объёмный) ===== */}
+<g>
+  {/* Ножки */}
+  <rect x="900" y="490" width="15" height="20" fill="#404040" stroke="#303030" strokeWidth="1"/>
+  <rect x="985" y="490" width="15" height="20" fill="#404040" stroke="#303030" strokeWidth="1"/>
+  
+  {/* Корпус */}
+  <rect x="880" y="450" width="140" height="40" rx="6" fill="url(#septicGradient)" stroke="#505050" strokeWidth="2"/>
+  
+  {/* Верхняя крышка */}
+  <ellipse cx="950" cy="450" rx="70" ry="6" fill="#606060" stroke="#404040" strokeWidth="2"/>
+  
+  {/* Блики */}
+  <rect x="890" y="455" width="8" height="30" rx="4" fill="#fff" opacity="0.2"/>
+  <rect x="1002" y="455" width="8" height="30" rx="4" fill="#000" opacity="0.3"/>
+  
+  {/* Текст */}
+  <text x="950" y="478" textAnchor="middle" fontSize="16" fontWeight="bold" fill="white" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>Септик</text>
+</g>
             </svg>
           </div>
 
