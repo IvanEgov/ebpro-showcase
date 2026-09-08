@@ -50,4 +50,32 @@ export const projects: Project[] = [
       "projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-04-archive.webp",
     ],
   },
+{
+    id: "02-smart-warehouse-IzumrudniyKOT",
+    title: "Котельная Изумрудного города г.Томск",
+    description: "SCADA-система управления котельной: мониторинг и управление газывыми котлами, задвижками, контроль уровней в резервуарах. Реализована полная мнемосхема технологического процесса.",
+    category: "SCADA / УК",
+    complexity: "advanced",
+    tags: ["SCADA", "Котлы", "Насосы", "Задвижки", "PLC", "Мнемосхема", "Алармы", "Тренды"],
+    features: {
+      screens_count: 4,
+      macros_count: 3,
+      has_data_logging: true,
+      has_alarm_server: true,
+      has_trends: true,
+    },
+    plc_connection: {
+      controller: "КОНТАР МС12",
+      protocol: "Modbus TCP",
+    },
+    author: "Иван Ежов",
+    // Пробелы в конце убраны!
+    previewImage: "projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-01-main-menu.webp",
+    screenshots: [
+      "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/screen-01-main-menu.webp",
+      "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/screen-02-mode.webp",
+      "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/screen-03-settings.webp",
+      "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/screen-04-archive.webp",
+    ],
+  },
 ];
