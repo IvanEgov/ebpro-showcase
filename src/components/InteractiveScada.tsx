@@ -1,3 +1,4 @@
+"use client";
 // components/InteractiveScada.tsx
 import { useState, useEffect } from 'react';
 
