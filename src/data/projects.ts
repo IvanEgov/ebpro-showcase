@@ -45,9 +45,9 @@ export const projects: Project[] = [
     previewImage: "projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-01-main-menu.webp",
     screenshots: [
       "projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-01-main-menu.webp",
-      "ebpro-showcase/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-02-mode.webp",
-      "ebpro-showcase/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-03-settings.webp",
-      "ebpro-showcase/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-04-archive.webp",
+      "projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-02-mode.webp",
+      "projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-03-settings.webp",
+      "projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-04-archive.webp",
     ],
   },
 ];
