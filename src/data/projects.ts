@@ -42,9 +42,9 @@ export const projects: Project[] = [
     },
     author: "Иван Ежов",
     // Пробелы в конце убраны!
-    previewImage: "ebpro-showcase/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-01-main-menu.webp",
+    previewImage: "projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-01-main-menu.webp",
     screenshots: [
-      "ebpro-showcase/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-01-main-menu.webp",
+      "projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-01-main-menu.webp",
       "ebpro-showcase/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-02-mode.webp",
       "ebpro-showcase/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-03-settings.webp",
       "ebpro-showcase/projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-04-archive.webp",
