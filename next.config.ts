@@ -6,6 +6,15 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true, // Обязательно: отключает оптимизацию изображений на сервере (для статики)
   },
+ webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.watchOptions = {
+        ignored: ['**/System Volume Information/**', '**/$Recycle.Bin/**'],
+      };
+    }
+    return config;
+ },
+turbopack: {},
 };
 
 export default nextConfig;
