@@ -18,6 +18,7 @@ export interface Project {
   };
   author: string;
   previewImage: string;
+  isInteractive?: boolean; // <-- ДОБАВЛЯЕМ ЭТО ПОЛЕ
   screenshots: string[];
 }
 
@@ -25,7 +26,7 @@ export const projects: Project[] = [
   {
     id: "01-smart-warehouse-AleksandroskoeBOK",
     title: "Водоочистной комплекс с. Александровское",
-    description: "SCADA-система управления водоочистным комплексом: мониторинг и управление насосными группами, задвижками, контроль уровней в резервуарах. Реализована полная мнемосхема технологического процесса.",
+    description: "SCADA-система управления водоочистным комплексом: мониторинг и управление насосными группами, задвижками, контроль уровней в резервуарах.",
     category: "SCADA / Водоканал",
     complexity: "advanced",
     tags: ["SCADA", "Водоочистка", "Насосы", "Задвижки", "PLC", "Мнемосхема", "Алармы", "Тренды"],
@@ -41,8 +42,8 @@ export const projects: Project[] = [
       protocol: "Modbus TCP",
     },
     author: "Иван Ежов",
-    // Пробелы в конце убраны!
     previewImage: "projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-01-main-menu.webp",
+    isInteractive: true, // <-- ВКЛЮЧАЕМ ИНТЕРАКТИВ ДЛЯ ЭТОГО ПРОЕКТА
     screenshots: [
       "projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-01-main-menu.webp",
       "projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-02-mode.webp",
@@ -50,10 +51,10 @@ export const projects: Project[] = [
       "projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-04-archive.webp",
     ],
   },
-{
+  {
     id: "02-smart-warehouse-IzumrudniyKOT",
     title: "Котельная Изумрудного города г.Томск",
-    description: "SCADA-система управления котельной: мониторинг и управление газывыми котлами, задвижками, контроль уровней в резервуарах. Реализована полная мнемосхема технологического процесса.",
+    description: "SCADA-система управления котельной: мониторинг и управление газовыми котлами, задвижками, контроль уровней в резервуарах.",
     category: "SCADA / УК",
     complexity: "advanced",
     tags: ["SCADA", "Котлы", "Насосы", "Задвижки", "PLC", "Мнемосхема", "Алармы", "Тренды"],
@@ -69,8 +70,8 @@ export const projects: Project[] = [
       protocol: "Modbus TCP",
     },
     author: "Иван Ежов",
-    // Пробелы в конце убраны!
     previewImage: "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/01-menu-izumrud.webp",
+    isInteractive: false, // <-- ОСТАВЛЯЕМ КАК ОБЫЧНУЮ КАРТИНКУ
     screenshots: [
       "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/01-menu-izumrud.webp",
       "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/02-graf-izumrud.webp",
@@ -79,4 +80,5 @@ export const projects: Project[] = [
       "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/05-ctp-izumrud.webp",
       "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/06-upr-izumrud.webp",
     ],
-  },];
+  },
+];

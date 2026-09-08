@@ -1,5 +1,6 @@
 import { projects } from "@/data/projects";
 import ScreenshotGallery from "@/components/ScreenshotGallery";
+import InteractiveScada from "@/components/InteractiveScada"; // <-- 1. Добавляем импорт компонента
 
 export default function Home() {
   return (
@@ -33,26 +34,38 @@ export default function Home() {
           {projects.map((project) => (
             <article
               key={project.id}
-              className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 dark:border-gray-700"
+              className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 flex flex-col"
             >
-              <div className="relative aspect-video bg-gray-100 dark:bg-gray-700 overflow-hidden group">
-                <img
-                  src={project.previewImage}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-4 right-4">
-                  <span className={`px-3 py-1 text-xs font-semibold rounded-full ${
+              {/* === 2. УСЛОВНЫЙ РЕНДЕРИНГ: SCADA или Картинка === */}
+              <div className="relative bg-gray-100 dark:bg-gray-700 overflow-hidden">
+                {project.isInteractive ? (
+                  <div className="w-full">
+                    <InteractiveScada />
+                  </div>
+                ) : (
+                  <div className="aspect-video group">
+                    <img
+                      src={project.previewImage}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                )}
+                
+                {/* Бейдж сложности (показываем поверх всего с z-10) */}
+                <div className="absolute top-4 right-4 z-10">
+                  <span className={`px-3 py-1 text-xs font-semibold rounded-full shadow-sm backdrop-blur-sm ${
                     project.complexity === 'advanced'
-                      ? 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200'
-                      : 'bg-green-100 text-green-800'
+                      ? 'bg-purple-100/90 text-purple-800 dark:bg-purple-900/90 dark:text-purple-200'
+                      : 'bg-green-100/90 text-green-800 dark:bg-green-900/90 dark:text-green-200'
                   }`}>
                     {project.complexity === 'advanced' ? 'Advanced' : 'Medium'}
                   </span>
                 </div>
               </div>
+              {/* ============================================== */}
 
-              <div className="p-6">
+              <div className="p-6 flex-1 flex flex-col">
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-xs font-medium text-blue-600 dark:text-blue-400 uppercase tracking-wider">
                     {project.category}
@@ -63,7 +76,7 @@ export default function Home() {
                   {project.title}
                 </h3>
 
-                <p className="text-gray-600 dark:text-gray-300 text-sm mb-5 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 text-sm mb-5 leading-relaxed flex-1">
                   {project.description}
                 </p>
 
@@ -86,7 +99,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-5">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
