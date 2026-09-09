@@ -24,7 +24,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: "01-smart-warehouse-AleksandroskoeBOK",
+    id: "water-treatment",
     title: "Водоочистной комплекс с. Александровское",
     description: "SCADA-система управления водоочистным комплексом: мониторинг и управление насосными группами, задвижками, контроль уровней в резервуарах.",
     category: "SCADA / Водоканал",
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "02-smart-warehouse-IzumrudniyKOT",
+    id: "boiler-house",
     title: "Котельная Изумрудного города г.Томск",
     description: "SCADA-система управления котельной: мониторинг и управление газовыми котлами, задвижками, контроль уровней в резервуарах.",
     category: "SCADA / УК",
@@ -71,7 +71,7 @@ export const projects: Project[] = [
     },
     author: "Иван Ежов",
     previewImage: "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/01-menu-izumrud.webp",
-    isInteractive: false, // <-- ОСТАВЛЯЕМ КАК ОБЫЧНУЮ КАРТИНКУ
+    isInteractive: true, // <-- ОСТАВЛЯЕМ КАК ОБЫЧНУЮ КАРТИНКУ
     screenshots: [
       "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/01-menu-izumrud.webp",
       "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/02-graf-izumrud.webp",
