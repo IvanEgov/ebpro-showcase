@@ -81,4 +81,51 @@ export const projects: Project[] = [
       "projects/02-smart-warehouse-IzumrudniyKOT/assets/optimized/06-upr-izumrud.webp",
     ],
   },
+    {
+        id: "ventilation-system",
+        title: "Приточно-вытяжная вентиляция (Центральный офис)",
+        description: "SCADA-система управления ПВУ: калорифер, кондиционер, рекуператор, фильтры и датчики.",
+        category: "SCADA / Вентиляция",
+        complexity: "advanced",
+        tags: ["SCADA", "Вентиляция", "Калорифер", "Кондиционер", "Рекуператор"],
+        features: {
+            screens_count: 3,
+            macros_count: 2,
+            has_data_logging: true,
+            has_alarm_server: true,
+            has_trends: true,
+        },
+        plc_connection: {
+            controller: "ОВЕН ПЛК110",
+            protocol: "Modbus RTU",
+        },
+        author: "Иван Ежов",
+        previewImage: "projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-01-main-menu.webp",
+        isInteractive: true,
+        screenshots: [],
+    },
+    {
+        id: "smart-home",
+        title: "Система Умный Дом (3-комнатная квартира)",
+        description: "Мониторинг освещения, датчиков движения, климата, контроля протечек воды и доступа.",
+        category: "Умный дом / IoT",
+        complexity: "medium",
+        tags: ["Умный дом", "Свет", "Протечки", "Датчики", "IoT"],
+        features: {
+            screens_count: 2,
+            macros_count: 1,
+            has_data_logging: true,
+            has_alarm_server: true,
+            has_trends: false,
+        },
+        plc_connection: {
+            controller: "Wiren Board 7",
+            protocol: "MQTT",
+        },
+        author: "Иван Ежов",
+        previewImage: "projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-01-main-menu.webp",
+        isInteractive: true,
+        screenshots: [],
+    }
+
 ];

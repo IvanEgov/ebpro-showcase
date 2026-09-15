@@ -5,18 +5,18 @@ import ProjectClient from './ProjectClient';
 
 // Эта функция говорит Next.js, какие именно страницы нужно сгенерировать при build
 export async function generateStaticParams() {
-  return projects.map((project) => ({
-    id: project.id,
-  }));
+    return projects.map((project) => ({
+        id: project.id,
+    }));
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
-  const project = projects.find((p) => p.id === id);
+    const { id } = await params;
+    const project = projects.find((p) => p.id === id);
 
-  if (!project) {
-    notFound();
-  }
+    if (!project) {
+        notFound();
+    }
 
-  return <ProjectClient projectId={id} />;
+    return <ProjectClient projectId={id} />;
 }
