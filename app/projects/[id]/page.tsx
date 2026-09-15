@@ -18,5 +18,5 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
         notFound();
     }
 
-    return <ProjectClient projectId={id} />;
+    return <ProjectClient  projectId={id} />;
 }
