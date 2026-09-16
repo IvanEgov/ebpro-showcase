@@ -149,6 +149,29 @@ export const projects: Project[] = [
         previewImage: "projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-01-main-menu.webp",
         isInteractive: true,
         screenshots: [],
+    },
+    {
+        id: "smart-office",
+        title: "Умный Офис (8 комнат + коридор)",
+        description: "Система автоматизации офиса: управление освещением, вентиляцией, мониторинг среды и датчики движения.",
+        category: "Умный офис / IoT",
+        complexity: "advanced",
+        tags: ["Умный офис", "Освещение", "Вентиляция", "Датчики", "IoT", "Автоматизация"],
+        features: {
+            screens_count: 3,
+            macros_count: 2,
+            has_data_logging: true,
+            has_alarm_server: true,
+            has_trends: true,
+        },
+        plc_connection: {
+            controller: "Wiren Board 7",
+            protocol: "MQTT",
+        },
+        author: "Иван Ежов",
+        previewImage: "projects/01-smart-warehouse-AleksandroskoeBOK/assets/optimized/screen-01-main-menu.webp",
+        isInteractive: true,
+        screenshots: [],
     }
 
 ];

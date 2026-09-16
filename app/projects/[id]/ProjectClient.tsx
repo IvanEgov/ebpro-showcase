@@ -8,6 +8,7 @@ import InteractiveScadaKotel from '@/components/InteractiveScadaKotel';
 import InteractiveScadaVentilation from '@/components/InteractiveScadaVentilation'; // ← НОВОЕ
 import InteractiveScadaSmartHome from '@/components/InteractiveScadaSmartHome';
 import InteractiveScadaVentilation2 from '@/components/InteractiveScadaVentilation2'; // ← НОВОЕ
+import InteractiveScadaSmartOffice from '@/components/InteractiveScadaSmartOffice'; // ← НОВОЕ
 
 export default function ProjectClient({ projectId }: { projectId: string }) {
     const router = useRouter();
@@ -64,6 +65,8 @@ export default function ProjectClient({ projectId }: { projectId: string }) {
                 {projectId === 'ventilation-system' && <InteractiveScadaVentilation />}
                 {projectId === 'smart-home' && <InteractiveScadaSmartHome />}
                 {projectId === 'ventilation-system2' && <InteractiveScadaVentilation2 />}
+                {projectId === 'smart-office' && <InteractiveScadaSmartOffice />} 
+
             </div>
         </div>
     );
